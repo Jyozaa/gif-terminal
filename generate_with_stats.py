@@ -2,6 +2,7 @@ import gifos
 from datetime import datetime
 import os
 import requests
+from profile_stats import fetch_profile_stats
 
 # ============================================
 # Terminal GIF with GitHub Stats
@@ -37,7 +38,7 @@ def get_total_repos(username):
 
 # Try to fetch GitHub statistics
 try:
-    github_stats = gifos.utils.fetch_github_stats(user_name=USERNAME)
+    github_stats = fetch_profile_stats(USERNAME)
     has_stats = github_stats is not None
     if not has_stats:
         print("Warning: Could not fetch GitHub stats")
@@ -127,13 +128,15 @@ t.gen_text("\x1b[96m=== Tech Stack ===\x1b[0m", row_num=3)
 t.clone_frame(3)
 
 skills = [
-    ("\x1b[94mCloud:\x1b[0m       ", "AWS, GCP, OCI, Cloudflare"),
-    ("\x1b[94mDevOps:\x1b[0m      ", "Terraform, Kubernetes, Docker, Git"),
-    ("\x1b[94mCI/CD:\x1b[0m       ", "GitLab, GitHub Actions"),
-    ("\x1b[94mMonitoring:\x1b[0m  ", "Grafana, Prometheus, Jaeger, Loki"),
-    ("\x1b[94mTools:\x1b[0m       ", "Postman, RabbitMQ, MongoDB"),
-    ("\x1b[94mOS:\x1b[0m          ", "macOS, Debian"),
-    ("\x1b[94mLanguages:\x1b[0m   ", "Java, Python"),
+    ("\x1b[94mLanguages:\x1b[0m   ", "Python, C/C++, Java, JavaScript, TypeScript, Swift, Lua"),
+    ("\x1b[94mMarkup:\x1b[0m      ", "HTML/CSS, LaTeX, Markdown"),
+    ("\x1b[94mAI/Data:\x1b[0m     ", "NumPy, Pandas, SciPy, Matplotlib, TensorFlow, PyTorch"),
+    ("\x1b[94mML/CV:\x1b[0m       ", "scikit-learn, OpenCV, CUDA, Anaconda"),
+    ("\x1b[94mBackend:\x1b[0m     ", "Django, FastAPI, Flask, Node.js, NPM"),
+    ("\x1b[94mFrontend:\x1b[0m    ", "Flutter, React, React Native, Next.js, Vue, Vite"),
+    ("\x1b[94mUI/Graphics:\x1b[0m ", "Tailwind, Chakra UI, Three.js, OpenGL, Figma, Canva, Blender"),
+    ("\x1b[94mDatabases:\x1b[0m   ", "MongoDB, MySQL, PostgreSQL, SQLite, Supabase, Firebase"),
+    ("\x1b[94mCloud/DevOps:\x1b[0m", " AWS, Azure, Vercel, Git, GitHub, GitLab, GitHub Actions"),
 ]
 
 for i, (label, value) in enumerate(skills):
