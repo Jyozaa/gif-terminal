@@ -438,11 +438,11 @@ t.clone_frame(5)
 t.clear_frame()
 
 t.gen_prompt(row_num=1)
-t.gen_typing_text("cat skills.txt", row_num=1, contin=True, speed=1)
+t.gen_typing_text("cat tech-ive-touched.txt", row_num=1, contin=True, speed=1)
 t.clone_frame(5)
 
 t.gen_text("", row_num=2)
-t.gen_text("\x1b[96m=== Tech Stack ===\x1b[0m", row_num=3)
+t.gen_text("\x1b[96m=== Tech I've Touched ===\x1b[0m", row_num=3)
 t.clone_frame(3)
 
 skills = [

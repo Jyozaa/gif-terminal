@@ -147,7 +147,7 @@ def prepare_glass_layers(wallpaper_path):
     # ---- Frosted glass — title bar ----
     title_region = wallpaper_bg.crop((WIN_X, WIN_Y, WIN_X + WIN_W, WIN_Y + TITLE_H))
     frosted_title = title_region.filter(ImageFilter.GaussianBlur(radius=5))
-    title_overlay = Image.new("RGBA", frosted_title.size, (255, 255, 255, 30))
+    title_overlay = Image.new("RGBA", frosted_title.size, (8, 10, 14, 90))
     frosted_title = _blend_overlay(frosted_title, title_overlay)
 
     # ---- Frosted glass — content area ----
@@ -155,7 +155,7 @@ def prepare_glass_layers(wallpaper_path):
         (TERMINAL_X, TERMINAL_Y, TERMINAL_X + WIN_W, TERMINAL_Y + 450)
     )
     frosted_content = content_region.filter(ImageFilter.GaussianBlur(radius=4))
-    content_overlay = Image.new("RGBA", frosted_content.size, (255, 255, 255, 22))
+    content_overlay = Image.new("RGBA", frosted_content.size, (4, 6, 10, 165))
     frosted_content = _blend_overlay(frosted_content, content_overlay)
 
     # ---- Assemble frosted window (with rounded corners) ----
@@ -314,11 +314,11 @@ t.clone_frame(5)
 t.clear_frame()
 
 t.gen_prompt(row_num=1)
-t.gen_typing_text("cat skills.txt", row_num=1, contin=True, speed=1)
+t.gen_typing_text("cat tech-ive-touched.txt", row_num=1, contin=True, speed=1)
 t.clone_frame(5)
 
 t.gen_text("", row_num=2)
-t.gen_text("\x1b[96m=== Tech Stack ===\x1b[0m", row_num=3)
+t.gen_text("\x1b[96m=== Tech I've Touched ===\x1b[0m", row_num=3)
 t.clone_frame(3)
 
 skills = [
@@ -355,7 +355,7 @@ t.clone_frame(40)
 # Post-process frames → Liquid Glass effect
 # ============================================
 
-base_canvas, chrome = prepare_glass_layers("assets/macos_wallpaper.jpg")
+base_canvas, chrome = prepare_glass_layers("assets/profile_wallpaper.png")
 post_process_frames(base_canvas, chrome)
 
 # ============================================
