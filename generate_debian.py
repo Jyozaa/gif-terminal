@@ -415,8 +415,8 @@ for i, line in enumerate(status_lines):
     t.gen_text(line, row_num=14 + i)
     t.clone_frame(3)
 
-# Hold the completed page for three seconds before clearing (15 FPS).
-t.clone_frame(45)
+# Hold the completed page for two seconds before clearing (15 FPS).
+t.clone_frame(30)
 t.gen_prompt(row_num=18)
 t.gen_typing_text("clear", row_num=18, contin=True, speed=1)
 t.clone_frame(5)
@@ -465,8 +465,8 @@ for i, line in enumerate(stats_lines):
 
 t.clone_frame(10)
 t.gen_text("\x1b[96m================================\x1b[0m", row_num=4 + len(stats_lines))
-# Hold the completed page for three seconds before clearing (15 FPS).
-t.clone_frame(45)
+# Hold the completed page for two seconds before clearing (15 FPS).
+t.clone_frame(30)
 
 # -- Clear + Skills --
 t.gen_prompt(row_num=5 + len(stats_lines))
@@ -509,7 +509,7 @@ t.gen_typing_text(
 )
 t.clone_frame(5)
 t.gen_text("\x1b[92mThanks for visiting my profile!\x1b[0m", row_num=final_row + 1)
-t.clone_frame(45)
+t.clone_frame(30)
 
 # ============================================
 # Post-process frames → Debian theme
