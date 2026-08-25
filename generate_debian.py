@@ -380,19 +380,54 @@ t.set_prompt(
     f"\x1b[92m{USERNAME}\x1b[0m@\x1b[91mdebian\x1b[0m:\x1b[94m~\x1b[0m$ "
 )
 
-# -- Boot sequence (systemd-style) --
-t.gen_text("\x1b[92m[  OK  ]\x1b[0m Started Session Manager.", row_num=1)
-t.clone_frame(4)
-t.gen_text("\x1b[92m[  OK  ]\x1b[0m Reached target Graphical Interface.", row_num=2)
-t.clone_frame(8)
+# -- Boot sequence --
+t.gen_text("Initializing terminal...", row_num=1)
+t.clone_frame(5)
+t.gen_text("\x1b[32m[OK]\x1b[0m System ready", row_num=2)
+t.clone_frame(10)
 
-# -- Stats command --
-t.gen_prompt(row_num=3)
-t.gen_typing_text("github-stats --user " + USERNAME, row_num=3, contin=True, speed=1)
+# -- JHK identity card --
+jhk_art = [
+    "JJJJJJJJJJ   HH::::::HH   KK:::::KK",
+    "::::::JJ::   HH::::::HH   KK::::KK:",
+    "::::::JJ::   HHHHHHHHHH   KKKKKK:::",
+    "JJ::::JJ::   HH::::::HH   KK::::KK:",
+    ":JJJJJJ:::   HH::::::HH   KK:::::KK",
+]
+
+for i, line in enumerate(jhk_art):
+    t.gen_text(f"\x1b[96m{line}\x1b[0m", row_num=4 + i)
+    t.clone_frame(2)
+
+t.clone_frame(8)
+t.gen_prompt(row_num=10)
+t.gen_typing_text("cat joe-status.txt", row_num=10, contin=True, speed=1)
 t.clone_frame(5)
 
-t.gen_text("", row_num=4)
-t.gen_text(f"\x1b[96m=== GitHub Stats for {USERNAME} ===\x1b[0m", row_num=5)
+t.gen_text("\x1b[96m###\x1b[0m", row_num=12)
+t.clone_frame(3)
+status_lines = [
+    "\x1b[93mJob:\x1b[0m     Student @ University of Leeds",
+    "\x1b[93mCourse:\x1b[0m  Computer Science",
+    "\x1b[93mVenture:\x1b[0m \x1b[96mAI and data research\x1b[0m",
+]
+for i, line in enumerate(status_lines):
+    t.gen_text(line, row_num=14 + i)
+    t.clone_frame(3)
+
+t.clone_frame(12)
+t.gen_prompt(row_num=18)
+t.gen_typing_text("clear", row_num=18, contin=True, speed=1)
+t.clone_frame(5)
+t.clear_frame()
+
+# -- Stats command --
+t.gen_prompt(row_num=1)
+t.gen_typing_text("github-stats --user " + USERNAME, row_num=1, contin=True, speed=1)
+t.clone_frame(5)
+
+t.gen_text("", row_num=2)
+t.gen_text(f"\x1b[96m=== GitHub Stats for {USERNAME} ===\x1b[0m", row_num=3)
 t.clone_frame(3)
 
 if has_stats:
@@ -424,16 +459,16 @@ else:
     ]
 
 for i, line in enumerate(stats_lines):
-    t.gen_text(line, row_num=6 + i)
+    t.gen_text(line, row_num=4 + i)
     t.clone_frame(3)
 
 t.clone_frame(10)
-t.gen_text("\x1b[96m================================\x1b[0m", row_num=6 + len(stats_lines))
+t.gen_text("\x1b[96m================================\x1b[0m", row_num=4 + len(stats_lines))
 t.clone_frame(15)
 
 # -- Clear + Skills --
-t.gen_prompt(row_num=7 + len(stats_lines))
-t.gen_typing_text("clear", row_num=7 + len(stats_lines), contin=True, speed=1)
+t.gen_prompt(row_num=5 + len(stats_lines))
+t.gen_typing_text("clear", row_num=5 + len(stats_lines), contin=True, speed=1)
 t.clone_frame(5)
 t.clear_frame()
 
